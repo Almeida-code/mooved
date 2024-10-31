@@ -1,0 +1,10 @@
+
+<h1> All Trucks 🚚 🚚 🚚</h1>
+<h2><%= link_to "Add a new Truck",
+  new_truck_path
+ %></h2>
+<ul>
+  <% @trucks.each do |truck| %>
+    <li><%= link_to truck.title, truck_path(truck) %></li>
+  <% end %>
+</ul>
