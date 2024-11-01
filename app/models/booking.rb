@@ -1,4 +1,5 @@
 class Booking < ApplicationRecord
+  belongs_to :user
   belongs_to :truck
-  # belongs_to :customer, class_name: 'User'
+  validates :start_date, :end_date, presence: true
 end

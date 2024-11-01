@@ -1,12 +1,76 @@
-.navbar-lewagon {
+/* Navbar styling */
+.navbar {
+  background-color: #00d0d7; /* Adjust color as desired */
+  padding: 10px 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+.navbar-container {
+  display: flex;
   justify-content: space-between;
-  background: white;
+  align-items: center;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+.navbar-logo img {
+  height: 40px; /* Adjust size as needed */
+  margin-right: 10px;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.navbar-links {
+  display: flex;
+  gap: 20px;
+}
+
+.navbar-link {
+  color: #ffffff;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-link:hover {
+  background-color: #005bb5;
+}
+
+.navbar-link.active, .navbar-link:focus {
+  background-color: #005bb5;
+}
+
+.navbar-logo img {
+  width: 40px;         /* Adjust width as needed */
+  height: 40px;        /* Adjust height as needed */
+  border-radius: 50%;  /* Makes the image fully rounded */
+  object-fit: cover;   /* Ensures the image scales correctly within the rounded shape */
+}
+
+/* Login Button */
+.login-button {
+  color: #ffffff;
+  background-color: #00a8d7; /* Soft blue for login */
+  padding: 6px 12px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #005bb5; /* Darker blue on hover */
+}
+
+/* Sign Up Button */
+.signup-button {
+  color: #ffffff;
+  background-color: #00a8d7; /* Green for sign up */
+  padding: 6px 12px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-left: 10px; /* Space between buttons */
+  transition: background-color 0.3s ease;
+}
+
+.signup-button:hover {
+  background-color: #005bb5; /* Darker green on hover */
 }

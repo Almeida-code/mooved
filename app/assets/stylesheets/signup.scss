@@ -1,0 +1,65 @@
+/* app/assets/stylesheets/signup.css */
+
+/* Centering container */
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f5f8fa;
+  padding: 20px;
+}
+
+/* Signup card styling */
+.signup-card {
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+}
+
+.signup-card h2 {
+  color: #0078D7;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+/* Input fields */
+.input-field {
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+/* Submit button styling */
+.signup-button {
+  background-color: #0078D7;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.signup-button:hover {
+  background-color: #005bb5;
+}
+
+/* Links styling (e.g., for login link) */
+.signup-card a {
+  color: #0078D7;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.signup-card a:hover {
+  color: #005bb5;
+}

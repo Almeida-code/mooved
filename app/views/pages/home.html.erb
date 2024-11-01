@@ -1,2 +1,10 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<%= stylesheet_link_tag 'welcome', media: 'all', 'data-turbo-track': 'reload' %>
+
+<div class="home-container">
+  <div class="home-content">
+    <%= image_tag "logo.png", alt: "Mooved Logo", class: "home-logo" %>
+    <h1>Welcome to Mooved</h1>
+    <p>Moving your business forward with reliable and easy truck rentals.</p>
+    <p>Mooved connects you to trusted truck rental services, ensuring a smooth, efficient, and professional experience every time. Join us and make your next move with confidence.</p>
+  </div>
+</div>

@@ -1,7 +1,43 @@
-<h1> All booking  🚚 🚚 🚚</h1>
+<%= stylesheet_link_tag 'bookings', media: 'all', 'data-turbo-track': 'reload' %>
 
-<ul>
-  <% @bookings.each do |booking| %>
-    <li><%= link_to booking.start_date, truck_path(booking)%></li>
-  <% end %>
-</ul>
+<div class="page-content">
+  <h1 class="page-heading">Your Bookings</h1>
+
+  <!-- Always-visible button to create a new booking -->
+  <%= link_to "Create a New Booking", new_truck_booking_path(Truck.first), class: "btn btn-create" %>
+
+  <div class="centered-content">
+    <% if @bookings.empty? %>
+      <p class="intro-message">You don't have any bookings yet. Start by creating one!</p>
+    <% else %>
+      <!-- List of Bookings -->
+      <table class="booking-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Postcode</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @bookings.each do |booking| %>
+            <tr>
+              <td><%= booking.truck.title %></td>
+              <td><%= booking.truck.description %></td>
+              <td><%= booking.truck.postcode %></td>
+              <td><%= booking.start_date %></td>
+              <td><%= booking.end_date %></td>
+              <td>
+                <%= link_to "Edit", edit_booking_path(booking), class: "btn btn-edit" %>
+                <%= link_to "Cancel", booking_path(booking), method: :delete, data: { confirm: "Are you sure you want to cancel this booking?" }, class: "btn btn-cancel" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</div>
