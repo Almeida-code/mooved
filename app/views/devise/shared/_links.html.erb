@@ -1,5 +1,6 @@
 <%- if controller_name != 'sessions' %>
-  <%= link_to "Log in", new_session_path(resource_name) %><br />
+  <%= link_to "<span style='color: grey; font-size: small;'>Already have a Mooved account?</span> <span style='color: blue;'>Log in</span>".html_safe, new_session_path(resource_name) %><br />
+
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
