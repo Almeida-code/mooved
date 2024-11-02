@@ -1,0 +1,45 @@
+/* app/assets/stylesheets/welcome.css */
+
+/* Main container for centering */
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f5f8fa;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Content box styling */
+.home-content {
+  max-width: 600px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+}
+
+/* Logo styling */
+.home-logo {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Headline */
+.home-content h1 {
+  font-size: 2.5em;
+  color: #0078D7;
+  margin-bottom: 15px;
+}
+
+/* Confidence-building text */
+.home-content p {
+  font-size: 1.1em;
+  color: #333333;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}

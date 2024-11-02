@@ -1,0 +1,16 @@
+<p><strong>Bookings</strong></p>
+  <%= @truck.title %>
+  <li><%= @booking.start_date %></li>
+    <li><%= @booking.end_date %></li>
+</ul>
+<br>
+
+<li><%= link_to "Update a booking ",
+  edit_booking_path(@truck)
+%></li>
+
+
+<li><%= link_to "Delete Booking",
+  booking_path(@truck),
+  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+%></li>

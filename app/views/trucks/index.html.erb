@@ -1,0 +1,40 @@
+<%= stylesheet_link_tag 'trucks', media: 'all', 'data-turbo-track': 'reload' %>
+
+<div class="page-content">
+  <h1 class="page-heading">Your Trucks</h1>
+
+  <!-- Add New Truck button, always visible -->
+  <div class="add-truck-button">
+    <%= link_to "Add New Truck", new_truck_path, class: "btn btn-create" %>
+  </div>
+
+  <% if @trucks.empty? %>
+    <p class="intro-message">You don't have any trucks listed yet. Start by adding one!</p>
+  <% else %>
+    <table class="truck-table">
+      <thead>
+        <tr>
+          <th>Truck Title</th>
+          <th>Description</th>
+          <th>Price per Day</th>
+          <th>Location Postcode</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @trucks.each do |truck| %>
+          <tr>
+            <td><%= truck.title %></td>
+            <td><%= truck.description %></td>
+            <td>$<%= truck.price %></td>
+            <td><%= truck.postcode %></td>
+            <td>
+              <%= link_to "Edit", edit_truck_path(truck), class: "btn btn-edit" %>
+              <%= link_to "Delete", truck_path(truck), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-cancel" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>
