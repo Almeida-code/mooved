@@ -3,7 +3,7 @@
 <div class="page-content">
   <h1 class="page-heading">New Truck Form 🚚</h1>
   <div class="form-wrapper">
-    <%= simple_form_for(@truck, remote: true) do |f| %>
+    <%= simple_form_for(@truck) do |f| %>
       <div class="form-group">
         <%= f.input :title, label: "Truck Title", input_html: { class: "form-control" } %>
       </div>

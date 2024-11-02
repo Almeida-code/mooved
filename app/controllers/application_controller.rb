@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   # Custom redirection after sign-in based on role
   def after_sign_in_path_for(resource)
     puts "Role of logged-in user: #{resource.role}"
-    if resource.role == 'customer'
+    if resource.role == 'company'
       trucks_path  # Redirects customers (truck managers) to their trucks page
     else
       bookings_path  # Redirects clients to the bookings page

@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
-  before_action :set_truck, only: %i[new create]
   before_action :authenticate_user!
+  before_action :set_booking, only: [:show, :edit, :update, :destroy]
+  before_action :set_truck, only: [:new, :create]
 
   def index
     # Only show bookings that belong to the currently logged-in user
@@ -8,12 +9,11 @@ class BookingsController < ApplicationController
   end
 
   def show
-    @trucks = Truck.all # Adjust this to filter by availability if needed
-    @booking = Booking.new
+    # `@booking` and `@truck` are set by the `set_booking` method
+    @truck = @booking.truck
   end
 
   def new
-    @truck = Truck.find(params[:truck_id]) # Finds the truck based on the provided truck_id
     @booking = Booking.new
     @trucks = Truck.all # Load all trucks for the dropdown
   end
@@ -32,28 +32,32 @@ class BookingsController < ApplicationController
   end
 
   def edit
-    @booking = Booking.find(params[:id])
+    # `@booking` and `@truck` are set by the `set_booking` method
+    @truck = @booking.truck
   end
 
   def update
-    @booking = Booking.find(params[:id])
     if @booking.update(booking_params)
-      redirect_to booking_path(@booking), notice: "Booking updated successfully!"
+      redirect_to bookings_path, notice: "Booking updated successfully!"
     else
       render :edit, alert: "Booking could not be updated. Please try again."
     end
   end
 
   def destroy
-    @booking = Booking.find(params[:id])
     @booking.destroy
     redirect_to bookings_path, status: :see_other, notice: "Booking canceled."
   end
 
   private
 
+  def set_booking
+    @booking = Booking.find(params[:id])
+    @truck = @booking.truck # Load the associated truck
+  end
+
   def set_truck
-    @truck = Truck.find(params[:truck_id])
+    @truck = Truck.find(params[:truck_id]) if params[:truck_id].present?
   end
 
   def booking_params

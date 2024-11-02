@@ -53,7 +53,7 @@ class TrucksController < ApplicationController
 
   # Ensure only customers can access these actions
   def authorize_customer
-    redirect_to root_path, alert: "Access denied." unless current_user.role == "customer"
+    redirect_to root_path, alert: "Access denied." unless current_user.role == "company"
   end
 
   def truck_params

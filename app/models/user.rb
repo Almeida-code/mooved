@@ -7,6 +7,6 @@ class User < ApplicationRecord
   # Association for bookings
   has_many :bookings, dependent: :destroy
 
-  # Association for trucks if the user is a customer
+  # Association for trucks if the user is a companys
   has_many :trucks, dependent: :destroy
 end
