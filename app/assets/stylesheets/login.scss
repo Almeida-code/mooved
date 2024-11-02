@@ -1,0 +1,77 @@
+/* Centering container */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f5f8fa;
+  padding: 20px;
+}
+
+/* Login card */
+.login-card {
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+.login-card h2 {
+  color: #0078D7;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+/* Input fields */
+.input-field {
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+/* Remember me checkbox styling */
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* Submit button */
+.login-button {
+  background-color: #0078D7;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.login-button:hover {
+  background-color: #005bb5;
+}
+
+/* Links styling (e.g., for forgot password) */
+.login-card a {
+  color: #0078D7;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.login-card a:hover {
+  color: #005bb5;
+}
+
+/* Custom welcome message styling */
+.welcome-message {
+  font-size: 1.2em;
+  color: #0078D7;
+  font-weight: bold;
+  margin-left: auto; /* Aligns the message to the right */
+}

@@ -1,4 +1,6 @@
 class Truck < ApplicationRecord
   has_many :bookings, dependent: :destroy
-  #  belongs_to :client, class_name: 'User'
+
+  # Associate each truck with a specific user (customer)
+  belongs_to :user
 end

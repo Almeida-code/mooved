@@ -1,9 +1,46 @@
-<h1> New Truck Form 🚚 </h1>
+<%= stylesheet_link_tag 'trucks', media: 'all', 'data-turbo-track': 'reload' %>
 
-<%= simple_form_for(@truck) do |f| %>
-  <%= f.input :title %>
-  <%= f.input :price %>
-  <%= f.input :description %>
-  <%= f.input :postcode %>
-  <%= f.submit %>
-<% end %>
+<div class="page-content">
+  <h1 class="page-heading">New Truck Form 🚚</h1>
+  <div class="form-wrapper">
+    <%= simple_form_for(@truck) do |f| %>
+      <div class="form-group">
+        <%= f.input :title, label: "Truck Title", input_html: { class: "form-control" } %>
+      </div>
+      <div class="form-group">
+        <%= f.input :price, label: "Price per Day ($)", input_html: { class: "form-control" } %>
+      </div>
+      <div class="form-group">
+        <%= f.input :description, label: "Description", input_html: { class: "form-control" } %>
+      </div>
+      <div class="form-group">
+        <%= f.input :postcode, label: "Location Postcode", input_html: { class: "form-control" } %>
+      </div>
+      <div class="form-actions">
+        <%= f.submit "Create Truck", class: "btn btn-create" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<!-- Modal for Success Message -->
+<div id="success-modal" class="modal" style="display: none;">
+  <div class="modal-content">
+    <p>Truck created successfully! What would you like to do next?</p>
+    <div class="modal-actions">
+      <%= link_to "Create Another Truck", new_truck_path, class: "btn btn-secondary" %>
+      <%= link_to "View My Trucks", trucks_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const form = document.querySelector("form");
+    const successModal = document.getElementById("success-modal");
+
+    form.addEventListener("ajax:success", function(event) {
+      successModal.style.display = "block"; // Show modal on successful form submission
+    });
+  });
+</script>
