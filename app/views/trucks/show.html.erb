@@ -1,40 +1,33 @@
-<h1> Individual truck 🚚 </h1>
+<% if user_signed_in? %>
+  <h1>Individual Truck 🚚</h1>
 
-<h2><%= @truck.title %></h2>
-<p><%= @truck.price %></p>
-<p><%= @truck.description %></p>
-<p><%= @truck.postcode %></p>
+  <h2><%= @truck.title %></h2>
+  <p>Price: $<%= @truck.price %></p>
+  <p>Description: <%= @truck.description %></p>
+  <p>Postcode: <%= @truck.postcode %></p>
 
-<h2><%= link_to "Make a new booking",
-  new_truck_booking_path(@truck)
-%></li> </h2>
+  <h2><%= link_to "Make a new booking", new_truck_booking_path(@truck) %></h2>
 
-<p><strong>Bookings</strong></p>
-<ul class="list-group">
-  <% @truck.bookings.each do |booking| %>
-    <li class="list-group-item"><p> start date</p><%= booking.start_date%></li>
-    <li class="list-group-item"><p> end date</p><%= booking.end_date%></li>
-    <li><%= link_to "Update",
-  edit_booking_path(@truck)
-%></li>
-    <li><%= link_to "Delete Booking",
-  booking_path(@truck),
-  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-%></li>
-  <% end %>
-</ul>
-<br>
+  <p><strong>Bookings</strong></p>
+  <ul class="list-group">
+    <% @truck.bookings.each do |booking| %>
+      <li class="list-group-item">
+        <p>Start Date: <%= booking.start_date %></p>
+        <p>End Date: <%= booking.end_date %></p>
+        <%= link_to "Update", edit_booking_path(booking) %>
+        <%= link_to "Delete Booking", booking_path(booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+      </li>
+    <% end %>
+  </ul>
 
-<li><%= link_to "Update",
-  edit_truck_path(@truck)
-%></li>
+  <br>
 
+  <%= link_to "Update", edit_truck_path(@truck) %>
+  <%= link_to "Delete", truck_path(@truck), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+  <%= link_to "Return to list of all Trucks", trucks_path %>
 
-<li><%= link_to "Delete",
-  truck_path(@truck),
-  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-%></li>
-
-<li><%= link_to "Return to list of all Trucks",
-  trucks_path
- %></li>
+<% else %>
+  <script>
+    window.location = '<%= new_user_session_path %>'; // Redirect to login
+  </script>
+<% end %>

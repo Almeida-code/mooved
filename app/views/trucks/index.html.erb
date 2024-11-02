@@ -22,18 +22,28 @@
         </tr>
       </thead>
       <tbody>
-        <% @trucks.each do |truck| %>
-          <tr>
-            <td><%= truck.title %></td>
-            <td><%= truck.description %></td>
-            <td>$<%= truck.price %></td>
-            <td><%= truck.postcode %></td>
-            <td>
-              <%= link_to "Edit", edit_truck_path(truck), class: "btn btn-edit" %>
-              <%= link_to "Delete", truck_path(truck), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-cancel" %>
-            </td>
-          </tr>
-        <% end %>
+<% @trucks.each do |truck| %>
+  <tr>
+    <td>
+      <% if user_signed_in? %>
+        <%= link_to truck.title, truck_path(truck) %>
+      <% else %>
+        <p>Please <%= link_to 'log in', new_user_session_path %> to view truck details.</p>
+      <% end %>
+    </td>
+    <td><%= truck.description %></td>
+    <td>$<%= number_to_currency(truck.price) %></td>
+    <td><%= truck.postcode %></td>
+    <td>
+      <% if user_signed_in? %>
+        <%= link_to "Edit", edit_truck_path(truck), class: "btn btn-edit" %>
+        <%= link_to "Delete", truck_path(truck), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-cancel" %>
+      <% else %>
+        <p>Please <%= link_to 'log in', new_user_session_path %> to manage trucks.</p>
+      <% end %>
+    </td>
+  </tr>
+<% end %>
       </tbody>
     </table>
   <% end %>

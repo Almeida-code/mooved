@@ -1,11 +1,9 @@
 class TrucksController < ApplicationController
-  before_action :authenticate_user!
-  before_action :authorize_customer
   before_action :set_truck, only: [:show, :edit, :update, :destroy]
 
   # List all trucks owned by the current customer
   def index
-    @trucks = current_user.trucks  # Only display trucks belonging to the logged-in customer
+    @trucks = Truck.all  # This fetches all trucks from the database
   end
 
   def show
@@ -48,7 +46,7 @@ class TrucksController < ApplicationController
 
   # Find the truck by ID and ensure it belongs to the current user
   def set_truck
-    @truck = current_user.trucks.find(params[:id])  # Raises an error if the truck is not owned by the current user
+    @truck = Truck.find(params[:id])
   end
 
   # Ensure only customers can access these actions

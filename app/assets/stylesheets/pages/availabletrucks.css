@@ -1,0 +1,23 @@
+/* Style the table header */
+table {
+  width: 100%; /* Optional: makes the table full width */
+  border-collapse: collapse; /* Optional: collapse borders */
+}
+
+th {
+  background-color: #00d0d7; /* Set background color for header */
+  color: white; /* Text color for better contrast */
+  padding: 10px; /* Padding for cells */
+  text-align: left; /* Aligns header text to the left */
+}
+
+td {
+  padding: 10px; /* Padding for data cells */
+  border: 1px solid #ddd; /* Light border for table cells */
+}
+
+/* Center the title h1 */
+h1 {
+  text-align: center; /* Centers the text horizontally */
+  margin-bottom: 20px; /* Optional: Adds space below the title */
+}

@@ -1,4 +1,5 @@
 <%= stylesheet_link_tag 'welcome', media: 'all', 'data-turbo-track': 'reload' %>
+<%= stylesheet_link_tag 'pages/availabletrucks', media: 'all', 'data-turbo-track': 'reload' %>
 
 <div class="home-container">
   <div class="home-content">
@@ -7,4 +8,35 @@
     <p>Moving your business forward with reliable and easy truck rentals.</p>
     <p>Mooved connects you to trusted truck rental services, ensuring a smooth, efficient, and professional experience every time. Join us and make your next move with confidence.</p>
   </div>
+</div>
+
+<h1>Available Trucks</h1>
+<div class="available-trucks">
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Price per Day</th>
+      <th>Postcode</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @trucks.each do |truck| %>
+      <tr>
+        <td>
+          <%= link_to truck.title, truck_path(truck), class: 'truck-link' %>
+        </td>
+        <td><%= truck.description %></td>
+        <td><%= number_to_currency(truck.price) %></td>
+        <td><%= truck.postcode %></td>
+      </tr>
+    <% end %>
+    <% else %>
+      <tr>
+        <td colspan="4">No trucks available at the moment.</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 </div>
