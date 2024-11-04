@@ -16,6 +16,23 @@
       <div class="form-group">
         <%= f.input :postcode, label: "Location Postcode", input_html: { class: "form-control" } %>
       </div>
+
+      <!-- Display current photo if attached, else show default -->
+      <div class="form-group">
+        <label class="form-label">Current Photo</label>
+        <% if @truck.photo.attached? %>
+          <%= image_tag @truck.photo.variant(resize_to_fill: [100, 100]).processed, class: "current-photo" %>
+        <% else %>
+          <%= image_tag "default_truck_logo.png", class: "current-photo", alt: "Default Truck Logo" %>
+        <% end %>
+      </div>
+
+      <!-- File field to upload a new photo -->
+      <div class="form-group">
+        <%= f.label :photo, "Change Truck Photo (Optional)", class: "form-label" %>
+        <%= f.file_field :photo, class: "form-control" %>
+      </div>
+
       <div class="form-actions">
         <%= f.submit "Update Truck", class: "btn btn-create" %>
       </div>

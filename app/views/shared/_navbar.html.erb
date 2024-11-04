@@ -37,19 +37,10 @@
           </li>
         <% end %>
       </ul>
-
       <% if user_signed_in? %>
-        <!-- Profile dropdown for signed-in user on the right -->
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "User menu" %>
-            </a>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Account", edit_user_registration_path, class: "dropdown-item" %>
-              <%= link_to "Settings", "#", class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "dropdown-item" %>
-            </div>
+          <li class="nav-item">
+            <%= link_to "Log Out", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "nav-link" %>
           </li>
         </ul>
       <% end %>

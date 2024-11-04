@@ -1,26 +1,39 @@
-<%= stylesheet_link_tag 'bookings', media: 'all', 'data-turbo-track': 'reload' %>
+<%= stylesheet_link_tag 'bookings/new', media: 'all', 'data-turbo-track': 'reload' %>
 
-<div class="form-container">
-  <h1 class="form-heading">Make a New Booking 🚚</h1>
+<div class="page-content">
+  <h1 class="page-heading">Select a Truck for Your Booking</h1>
 
-  <%= form_with(model: @booking, url: truck_bookings_path(@truck), class: "booking-form") do |f| %>
-    <div class="form-group">
-      <%= f.label :truck_id, "Choose a Truck", class: "form-label" %>
-      <%= f.collection_select :truck_id, @trucks, :id, :title, prompt: "Select a truck", class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :start_date, class: "form-label" %>
-      <%= f.date_field :start_date, class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :end_date, class: "form-label" %>
-      <%= f.date_field :end_date, class: "form-control" %>
-    </div>
-
-    <div class="form-actions">
-      <%= f.submit "Book Now", class: "btn btn-create" %>
+  <!-- Display validation errors if there are any -->
+  <% if @booking.errors.any? %>
+    <div class="error-messages" style="color: red">
+      <h2>There were some issues with your booking:</h2>
+      <ul>
+        <% @booking.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
     </div>
   <% end %>
+
+  <div class="trucks-grid">
+    <% @trucks.each do |truck| %>
+      <div class="truck-tile">
+        <% if truck.photo.attached? %>
+          <%= image_tag truck.photo.variant(resize_to_fill: [100, 100]), alt: "#{truck.title} photo", class: "truck-photo" %>
+        <% else %>
+          <%= image_tag "default_truck_logo.png", alt: "Default Truck Logo", class: "truck-photo", size: "100x100" %>
+        <% end %>
+
+        <h2 class="truck-title"><%= truck.title %></h2>
+        <p><strong>Price per Day:</strong> $<%= truck.price %></p>
+        <p><strong>Description:</strong> <%= truck.description %></p>
+        <p><strong>Location:</strong> <%= truck.postcode %></p>
+
+        <!-- Wrap form in a Turbo frame for AJAX-style updates -->
+        <%= turbo_frame_tag "booking_form_#{truck.id}" do %>
+          <%= render 'bookings/form', booking: @booking, truck: truck %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>

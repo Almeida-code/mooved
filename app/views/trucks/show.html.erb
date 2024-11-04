@@ -1,40 +1,29 @@
-<h1> Individual truck 🚚 </h1>
+<h1>Truck Details 🚚</h1>
 
-<h2><%= @truck.title %></h2>
-<p><%= @truck.price %></p>
-<p><%= @truck.description %></p>
-<p><%= @truck.postcode %></p>
+<div class="truck-details">
+  <%= image_tag @truck.photo.attached? ? url_for(@truck.photo) : asset_path('default_truck_logo.png'), alt: @truck.title, class: "truck-photo" %>
+  <h2><%= @truck.title %></h2>
+  <p><strong>Price per Day:</strong> $<%= @truck.price %></p>
+  <p><strong>Description:</strong> <%= @truck.description %></p>
+  <p><strong>Location Postcode:</strong> <%= @truck.postcode %></p>
 
-<h2><%= link_to "Make a new booking",
-  new_truck_booking_path(@truck)
-%></li> </h2>
+  <%= link_to "Make a New Booking", new_truck_booking_path(@truck), class: "btn btn-create" %>
+</div>
 
-<p><strong>Bookings</strong></p>
+<h3>Bookings for This Truck</h3>
 <ul class="list-group">
   <% @truck.bookings.each do |booking| %>
-    <li class="list-group-item"><p> start date</p><%= booking.start_date%></li>
-    <li class="list-group-item"><p> end date</p><%= booking.end_date%></li>
-    <li><%= link_to "Update",
-  edit_booking_path(@truck)
-%></li>
-    <li><%= link_to "Delete Booking",
-  booking_path(@truck),
-  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-%></li>
+    <li class="list-group-item"><strong>Start Date:</strong> <%= booking.start_date %></li>
+    <li class="list-group-item"><strong>End Date:</strong> <%= booking.end_date %></li>
+    <li>
+      <%= link_to "Update", edit_booking_path(booking), class: "btn btn-edit" %>
+      <%= link_to "Delete Booking", booking_path(booking), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "btn btn-cancel" %>
+    </li>
   <% end %>
 </ul>
-<br>
 
-<li><%= link_to "Update",
-  edit_truck_path(@truck)
-%></li>
-
-
-<li><%= link_to "Delete",
-  truck_path(@truck),
-  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-%></li>
-
-<li><%= link_to "Return to list of all Trucks",
-  trucks_path
- %></li>
+<div class="truck-actions">
+  <%= link_to "Edit Truck", edit_truck_path(@truck), class: "btn btn-edit" %>
+  <%= link_to "Delete Truck", truck_path(@truck), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "btn btn-cancel" %>
+  <%= link_to "Return to All Trucks", trucks_path, class: "btn btn-secondary" %>
+</div>

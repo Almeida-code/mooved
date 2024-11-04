@@ -47,7 +47,7 @@
 }
 
 .form-group {
-  width: 100%; /* Full width within the form wrapper */
+  width: 100%;
   margin-bottom: 20px;
 }
 
@@ -88,6 +88,21 @@
   background-color: #f2f2f2;
 }
 
+/* Styling for truck photo display */
+.truck-photo {
+  width: 20px !important;
+  height: 20px !important;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Center truck details for show page */
+.truck-details {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
 /* Styling for Edit and Delete buttons in table */
 .btn-edit {
   background-color: #007bff;
@@ -114,4 +129,13 @@
 
 .btn-cancel:hover {
   background-color: #c82333;
+}
+
+.current-photo {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
