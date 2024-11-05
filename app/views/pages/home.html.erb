@@ -8,3 +8,33 @@
     <p>Mooved connects you to trusted truck rental services, ensuring a smooth, efficient, and professional experience every time. Join us and make your next move with confidence.</p>
   </div>
 </div>
+
+<div class="truck-list">
+  <h2>Available Trucks</h2>
+  <table class="table-trucks">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Photo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @trucks.each do |truck| %>
+        <tr>
+          <td class="first-column"><%= truck.title %></td>
+          <td><%= truck.description %></td>
+          <td>$<%= truck.price %></td>
+          <td>
+            <% if truck.photo.attached? %>
+              <%= image_tag truck.photo, alt: truck.title, class: "truck-photo" %>
+            <% else %>
+              No photo available
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
