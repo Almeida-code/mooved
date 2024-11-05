@@ -1,0 +1,29 @@
+@import 'bookings/common';
+
+.booking-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.booking-table th,
+.booking-table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.booking-table th {
+  background-color: #333;
+  color: #fff;
+  font-weight: bold;
+}
+
+.booking-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.intro-message {
+  font-size: 1.2em;
+  color: #555;
+}

@@ -16,6 +16,10 @@
       <div class="form-group">
         <%= f.input :postcode, label: "Location Postcode", input_html: { class: "form-control" } %>
       </div>
+      <div class="form-group">
+        <%= f.label :photo, "Upload Truck Photo (Optional)", class: "form-label" %>
+        <%= f.file_field :photo, class: "form-control" %>
+      </div>
       <div class="form-actions">
         <%= f.submit "Create Truck", class: "btn btn-create" %>
       </div>

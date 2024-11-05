@@ -5,3 +5,8 @@
 //= link popper.js
 //= link bootstrap.min.js
 //= link rails-ujs.js
+//= link bookings/edit.css
+//= link bookings/index.css
+//= link bookings/new.css
+//= link bookings/show.css
+//= link bookings/_common.css

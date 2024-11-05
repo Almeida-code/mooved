@@ -20,14 +20,13 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    @booking.user = current_user # Associate the booking with the logged-in user
+    @booking.user = current_user
+
     if @booking.save
-      Rails.logger.info "Booking created successfully"
       redirect_to bookings_path, notice: "Booking created successfully!"
     else
-      Rails.logger.info "Booking creation failed: #{@booking.errors.full_messages.join(", ")}"
-      @trucks = Truck.all # Ensure trucks are reloaded for the form if save fails
-      render :new, alert: "Booking could not be created. Please try again."
+      @trucks = Truck.all # Reload trucks for the form if save fails
+      render :new, status: :unprocessable_entity, alert: "Booking could not be created due to overlapping dates."
     end
   end
 
@@ -45,9 +44,14 @@ class BookingsController < ApplicationController
   end
 
   def destroy
-    @booking.destroy
-    redirect_to bookings_path, status: :see_other, notice: "Booking canceled."
+    @booking = Booking.find(params[:id])
+    if @booking.destroy
+      redirect_to bookings_path, notice: "Booking canceled."
+    else
+      redirect_to bookings_path, alert: "Failed to cancel booking."
+    end
   end
+
 
   private
 

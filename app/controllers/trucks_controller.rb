@@ -27,7 +27,6 @@ class TrucksController < ApplicationController
     end
   end
 
-
   def edit
   end
 
@@ -56,7 +55,8 @@ class TrucksController < ApplicationController
     redirect_to root_path, alert: "Access denied." unless current_user.role == "company"
   end
 
+  # Permit truck parameters, including photo (optional)
   def truck_params
-    params.require(:truck).permit(:title, :price, :description, :postcode)
+    params.require(:truck).permit(:title, :price, :description, :postcode, :photo)
   end
 end

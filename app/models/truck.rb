@@ -3,4 +3,7 @@ class Truck < ApplicationRecord
 
   # Associate each truck with a specific user (customer)
   belongs_to :user
+
+  # Allow photo attachment with Active Storage
+  has_one_attached :photo
 end
