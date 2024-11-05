@@ -15,7 +15,11 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
-    @trucks = Truck.all # Load all trucks for the dropdown
+    if params[:query].present?
+      @trucks= Truck.search_by_booking(params[:query])
+    else
+      @trucks = Truck.all # Load all trucks for the dropdown
+    end
   end
 
   def create
