@@ -1,0 +1,54 @@
+// alltrucks.scss
+
+.table-trucks {
+  width: 80%; // Adjust as needed to center within the page
+  margin: 0 auto; // Center the table horizontally
+  border-collapse: collapse;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  th, td {
+    border: 1px solid #ddd; // Border for table cells
+    padding: 12px;
+  }
+
+  th {
+    background-color: #00d0d7; // Color for the header
+    color: white; // White text for contrast
+    font-weight: bold;
+  }
+
+  td.first-column {
+    background-color: transparent; // Remove the background color
+    color: inherit; // Inherit text color
+    font-weight: normal; // Reset font weight if necessary
+  }
+
+  tr:nth-child(even) {
+    background-color: #f9f9f9; // Light background for alternating rows
+  }
+
+  tr:hover {
+    background-color: #f1f1f1; // Hover effect for rows
+  }
+}
+
+// Center the heading
+.truck-list {
+  text-align: center; // Center align text in the truck-list
+  margin: 20px 0; // Optional: Add some margin above and below
+}
+
+.truck-list h2 {
+  margin: 0; // Remove default margin if needed
+  // You can add more styles if desired, e.g., font size or color
+}
+
+// Styling the page's main container for layout
+.trucks-container {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
