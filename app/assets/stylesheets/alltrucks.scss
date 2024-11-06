@@ -52,3 +52,12 @@
   flex-direction: column;
   align-items: center;
 }
+
+.redirect-link {
+  color: #00d0d7; // Example color
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
