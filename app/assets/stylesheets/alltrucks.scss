@@ -33,31 +33,25 @@
   }
 }
 
-// Center the heading
-.truck-list {
-  text-align: center; // Center align text in the truck-list
-  margin: 20px 0; // Optional: Add some margin above and below
+/* Styling for images inside the table */
+.table-trucks img.truck-photo {
+  max-width: 1000px !important;      /* Limit the max-width to 50px */
+  max-height: 100px !important;     /* Limit the max-height to 50px */
+  object-fit: contain !important; /* Ensure the whole image fits */
+  border-radius: 4px;              /* Optional: Add rounded corners */
 }
 
-.truck-list h2 {
-  margin: 0; // Remove default margin if needed
-  // You can add more styles if desired, e.g., font size or color
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .table-trucks img.truck-photo {
+    width: 80px !important;   /* Smaller images for tablets */
+    height: 80px !important;
+  }
 }
 
-// Styling the page's main container for layout
-.trucks-container {
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-}
-
-.redirect-link {
-  color: #00d0d7; // Example color
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
+@media (max-width: 480px) {
+  .table-trucks img.truck-photo {
+    width: 60px !important;   /* Even smaller images for mobile */
+    height: 60px !important;
   }
 }

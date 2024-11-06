@@ -36,7 +36,7 @@
             <% if truck.photo.attached? %>
               <%= image_tag truck.photo, alt: truck.title, class: "truck-photo" %>
             <% else %>
-              No photo available
+              <%= image_tag "https://d2e5b8shawuel2.cloudfront.net/vehicle/287160/hrv/original.jpg", alt: "Placeholder", class: "truck-photo", style: "width: 100px; height: 100px;" %>
             <% end %>
           </td>
         </tr>
