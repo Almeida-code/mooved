@@ -23,14 +23,20 @@
     <tbody>
       <% @trucks.each do |truck| %>
         <tr>
-          <td class="first-column"><%= truck.title %></td>
+          <td class="first-column">
+            <% if user_signed_in? %>
+              <%= link_to truck.title, truck_path(truck) %> <!-- Link to the truck details page -->
+            <% else %>
+              <%= link_to truck.title, new_user_session_path, class: "redirect-link" %> <!-- Redirect to login page -->
+            <% end %>
+          </td>
           <td><%= truck.description %></td>
           <td>$<%= truck.price %></td>
           <td>
             <% if truck.photo.attached? %>
               <%= image_tag truck.photo, alt: truck.title, class: "truck-photo" %>
             <% else %>
-              No photo available
+              <%= image_tag "https://d2e5b8shawuel2.cloudfront.net/vehicle/287160/hrv/original.jpg", alt: "Placeholder", class: "truck-photo", style: "width: 100px; height: 100px;" %>
             <% end %>
           </td>
         </tr>
