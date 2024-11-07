@@ -25,9 +25,9 @@
         <tr>
           <td class="first-column">
             <% if user_signed_in? %>
-              <%= link_to truck.title, truck_path(truck) %> <!-- Link to the truck details page -->
+            <%= link_to truck.title, new_truck_booking_path(truck) %> <!-- Redirects to the booking form for the specific truck -->
             <% else %>
-              <%= link_to truck.title, new_user_session_path, class: "redirect-link" %> <!-- Redirect to login page -->
+            <%= link_to truck.title, new_user_session_path, class: "redirect-link" %> <!-- Redirect to login page -->
             <% end %>
           </td>
           <td><%= truck.description %></td>

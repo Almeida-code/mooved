@@ -14,11 +14,17 @@ class BookingsController < ApplicationController
   end
 
   def new
-    @booking = Booking.new
-    if params[:query].present?
-      @trucks= Truck.search_by_booking(params[:query])
+    if params[:truck_id].present?
+      @truck = Truck.find(params[:truck_id]) # Direct booking for a specific truck
+      @booking = Booking.new(truck: @truck)  # Prepopulate the booking with the selected truck
+      @trucks = [] # Ensure @trucks is set to an empty array when showing a single truck for booking
     else
-      @trucks = Truck.all # Load all trucks for the dropdown
+      @booking = Booking.new
+      if params[:query].present?
+        @trucks = Truck.search_by_booking(params[:query]) # Truck search functionality
+      else
+        @trucks = Truck.all # Load all trucks for the dropdown
+      end
     end
   end
 
