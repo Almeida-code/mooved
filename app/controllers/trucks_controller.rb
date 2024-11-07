@@ -1,7 +1,7 @@
 class TrucksController < ApplicationController
   before_action :authenticate_user!
   before_action :authorize_customer
-  before_action :set_truck, only: [:show, :edit, :update, :destroy]
+  before_action :set_truck, only: [:show, :edit, :update, :destroy, :cancel] # Include :cancel here
 
   # List all trucks owned by the current customer
   def index
@@ -39,8 +39,21 @@ class TrucksController < ApplicationController
   end
 
   def destroy
-    @truck.destroy
-    redirect_to trucks_path, status: :see_other, notice: "Truck deleted successfully."
+    @truck = Truck.find(params[:id])
+    if @truck.destroy
+      redirect_to trucks_path, notice: "Truck deleted."
+    else
+      redirect_to truck_path, alert: "Failed to delete truck."
+    end
+  end
+
+  def cancel
+    @truck = Truck.find(params[:id])
+    if @truck.destroy
+      redirect_to trucks_path, notice: "Truck deleted."
+    else
+      redirect_to truck_path, alert: "Failed to delete truck."
+    end
   end
 
   private
