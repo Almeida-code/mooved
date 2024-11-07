@@ -34,7 +34,7 @@
             <td><%= truck.postcode %></td>
             <td>
               <%= link_to "Edit", edit_truck_path(truck), class: "btn btn-edit" %>
-              <%= link_to "Delete", truck_path(truck), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-cancel" %>
+              <%= link_to "Delete", truck_path(truck), method: :delete, data: { confirm: "Are you sure you want to delete this truck?" }, class: "btn btn-cancel" %>
             </td>
           </tr>
         <% end %>

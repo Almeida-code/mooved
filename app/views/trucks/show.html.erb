@@ -17,13 +17,13 @@
     <li class="list-group-item"><strong>End Date:</strong> <%= booking.end_date %></li>
     <li>
       <%= link_to "Update", edit_booking_path(booking), class: "btn btn-edit" %>
-      <%= link_to "Delete Booking", booking_path(booking), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "btn btn-cancel" %>
+      <%= link_to "Delete Booking", booking_path(booking), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-cancel" %>
     </li>
   <% end %>
 </ul>
 
 <div class="truck-actions">
   <%= link_to "Edit Truck", edit_truck_path(@truck), class: "btn btn-edit" %>
-  <%= link_to "Delete Truck", truck_path(@truck), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "btn btn-cancel" %>
+  <%= button_to "Delete Truck", cancel_truck_path(@truck), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-cancel" %>
   <%= link_to "Return to All Trucks", trucks_path, class: "btn btn-secondary" %>
 </div>
