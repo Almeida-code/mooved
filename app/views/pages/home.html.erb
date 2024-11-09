@@ -34,9 +34,9 @@
           <td>$<%= truck.price %></td>
           <td>
             <% if truck.photo.attached? %>
-              <%= image_tag truck.photo, alt: truck.title, class: "truck-photo" %>
+              <%= image_tag truck.photo, alt: truck.title, class: "truck-photo", size: "90x90"  %>
             <% else %>
-              <%= image_tag "https://d2e5b8shawuel2.cloudfront.net/vehicle/287160/hrv/original.jpg", alt: "Placeholder", class: "truck-photo", style: "width: 100px; height: 100px;" %>
+              <%= image_tag "https://d2e5b8shawuel2.cloudfront.net/vehicle/287160/hrv/original.jpg", alt: "Placeholder", class: "truck-photo", style: "width: 100px; height: 100px;", size: "80x80"  %>
             <% end %>
           </td>
         </tr>
