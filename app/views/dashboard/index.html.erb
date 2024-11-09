@@ -1,24 +1,33 @@
-<div class="booking-summary">
-  <h2>Total Bookings for Your Trucks</h2>
-  <p><%= @total_bookings %> bookings</p>
+<%= stylesheet_link_tag 'dashboard', media: 'all', 'data-turbo-track': 'reload' %>
+
+<div class="title">
+  <h1>Dashboard</h2>
 </div>
 
-<div class="fleet-summary">
-  <h2>Total Trucks in fleet</h2>
-  <p><%= @total_trucks %> trucks
+<div class="summary-cards">
+  <div class="booking-summary card">
+    <h2>Total Bookings for Your Trucks</h2>
+    <p><%= @total_bookings %> bookings</p>
+  </div>
+
+  <div class="fleet-summary card">
+    <h2>Total Trucks in fleet</h2>
+    <p><%= @total_trucks %> trucks
+  </div>
+
+  <div class="total-revenue card">
+    <h2>Total Revenue</h2>
+    <p>$<%= @sum_of_bookings %> total revenue
+  </div>
 </div>
 
-<div class="Total-revenue">
-  <h2>Total Revenue</h2>
-  <p><%= @sum_of_bookings %> total revenue
+<div class="truck-list-header">
+  <h2>Your Trucks and Their Bookings</h2>
 </div>
-
 
 <div class="truck-list">
-  <h2>Your Trucks and Their Bookings</h2>
-
   <% @trucks.each do |truck| %>
-    <div class="truck">
+    <div class="truck-card">
       <h3><%= truck.title %></h3>
       <p>Description: <%= truck.description %></p>
       <p>Price: $<%= truck.price %></p>
@@ -26,16 +35,29 @@
 
       <h4>Bookings:</h4>
       <% if truck.bookings.any? %>
-        <ul>
-          <% truck.bookings.each do |booking| %>
-            <li>
-              Booking ID: <%= booking.id %>,
-              Start Date: <%= booking.start_date %>,
-              End Date: <%= booking.end_date %>
-              <%= (booking.end_date - booking.start_date).to_i * truck.price %>
-            </li>
-          <% end %>
+        <ul style='padding: 0'>
+          <table class="booking-table">
+            <thead>
+            <tr>
+              <th>ID</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+              <th> Total Price </th>
+            </tr>
+            </thead>
+            <tbody>
+              <% truck.bookings.each do |booking| %>
+              <tr>
+              <td><%= booking.id %></td>
+              <td><%= booking.start_date %></td>
+              <td><%= booking.end_date %></td>
+              <td><%= (booking.end_date - booking.start_date).to_i * truck.price %></td>
+              </tr>
+              <% end %>
+            </tbody>
+            </table>
         </ul>
+
       <% else %>
         <p>No bookings for this truck.</p>
       <% end %>
