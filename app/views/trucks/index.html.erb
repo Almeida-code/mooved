@@ -28,7 +28,7 @@
             <td>
               <%= image_tag truck.photo.attached? ? url_for(truck.photo) : asset_path('default_truck_logo.png'), alt: truck.title, class: "truck-photo", size: "80x80" %>
             </td>
-            <td><%= truck.title %></td>
+            <td><%= link_to truck.title, truck_path(truck) %></td>
             <td><%= truck.description %></td>
             <td>$<%= truck.price %></td>
             <td><%= truck.postcode %></td>
