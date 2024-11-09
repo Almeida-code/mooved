@@ -1,4 +1,4 @@
-<%= form_with(model: @booking, url: truck_bookings_path(truck_id: truck.id), data: { turbo: false }, method: :post, local: true, class: "booking-form") do |f| %>
+<%= form_with(model: @booking, url: bookings_path(truck_id: truck.id), data: { turbo: false }, method: :post, local: true, class: "booking-form") do |f| %>
   <%= f.hidden_field :truck_id, value: truck.id %>
 
   <div class="form-group">
