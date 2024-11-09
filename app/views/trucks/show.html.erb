@@ -21,27 +21,31 @@
 
   <div class="bookings-truck">
     <h3><strong>Bookings for This Truck</strong></h3>
-     <table class="booking-table">
-        <thead>
-          <tr>
-            <th>Start Date</th>
-            <th>End Date</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @truck.bookings.each do |booking| %>
+    <% if @truck.bookings.empty?%>
+      <p>You don't have any bookings yet.</p>
+    <% else %>
+      <table class="booking-table">
+          <thead>
             <tr>
-              <td><%= booking.start_date %></td>
-              <td><%= booking.end_date %></td>
+              <th>Start Date</th>
+              <th>End Date</th>
             </tr>
-        </tbody>
-      </table>
-        <div class="booking-options">
-          <%= link_to "Update Booking", edit_booking_path(booking), class: "btn btn-edit" %>
-          <%= link_to "Delete Booking", booking_path(booking), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-cancel" %>
-        </div>
-      <% end %>
-    </ul>
+          </thead>
+          <tbody>
+            <% @truck.bookings.each do |booking| %>
+              <tr>
+                <td><%= booking.start_date %></td>
+                <td><%= booking.end_date %></td>
+              </tr>
+          </tbody>
+        </table>
+          <div class="booking-options">
+            <%= link_to "Update Booking", edit_booking_path(booking), class: "btn btn-edit" %>
+            <%= link_to "Delete Booking", booking_path(booking), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-cancel" %>
+          </div>
+        <% end %>
+      </ul>
+   <% end %>
   </div>
 
 
