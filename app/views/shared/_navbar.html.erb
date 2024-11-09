@@ -21,10 +21,13 @@
             <%= link_to "Bookings", bookings_path, class: "nav-link" %> <!-- Goes to bookings#index -->
           </li>
 
-          <!-- Conditional "Trucks" link for companies -->
+          <!-- Conditional "Trucks" & "Dashboard" link for companies -->
           <% if current_user.role == 'company' %>
             <li class="nav-item">
               <%= link_to "Trucks", trucks_path, class: "nav-link" %> <!-- Goes to trucks#index -->
+            </li>
+            <li class="nav-item">
+              <%= link_to "Dashboard", dashboard_path, class: "nav-link" %> <!-- Goes to trucks#index -->
             </li>
           <% end %>
         <% else %>
