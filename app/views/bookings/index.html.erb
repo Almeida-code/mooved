@@ -4,7 +4,7 @@
   <h1 class="page-heading">Your Bookings</h1>
 
   <!-- Always-visible button to create a new booking -->
-  <%= link_to "Create a New Booking", new_truck_booking_path(Truck.first), class: "btn btn-create" %>
+  <%= link_to "Create a New Booking", new_booking_path, class: "btn btn-create" %>
 
   <div class="centered-content">
     <% if @bookings.empty? %>
