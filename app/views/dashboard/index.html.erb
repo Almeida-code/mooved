@@ -1,0 +1,44 @@
+<div class="booking-summary">
+  <h2>Total Bookings for Your Trucks</h2>
+  <p><%= @total_bookings %> bookings</p>
+</div>
+
+<div class="fleet-summary">
+  <h2>Total Trucks in fleet</h2>
+  <p><%= @total_trucks %> trucks
+</div>
+
+<div class="Total-revenue">
+  <h2>Total Revenue</h2>
+  <p><%= @sum_of_bookings %> total revenue
+</div>
+
+
+<div class="truck-list">
+  <h2>Your Trucks and Their Bookings</h2>
+
+  <% @trucks.each do |truck| %>
+    <div class="truck">
+      <h3><%= truck.title %></h3>
+      <p>Description: <%= truck.description %></p>
+      <p>Price: $<%= truck.price %></p>
+      <p>Postcode: <%= truck.postcode %></p>
+
+      <h4>Bookings:</h4>
+      <% if truck.bookings.any? %>
+        <ul>
+          <% truck.bookings.each do |booking| %>
+            <li>
+              Booking ID: <%= booking.id %>,
+              Start Date: <%= booking.start_date %>,
+              End Date: <%= booking.end_date %>
+              <%= (booking.end_date - booking.start_date).to_i * truck.price %>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>No bookings for this truck.</p>
+      <% end %>
+    </div>
+  <% end %>
+</div>

@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+  get 'dashboard/index'
   devise_for :users
   root to: "pages#home"
+
+  get 'dashboard', to: 'dashboard#index'
 
   # Nested bookings under trucks
   resources :trucks, only: [:index, :new, :create, :edit, :update, :destroy, :show] do

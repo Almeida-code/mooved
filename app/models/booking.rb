@@ -23,4 +23,25 @@ class Booking < ApplicationRecord
     end
   end
 
+  # def days_booked_by_month
+  #   current_date = start_date.beginning_of_month
+  #   days_per_month = {}
+
+  #   while current_date <= end_date
+  #     month_end = [current_date.end_of_month, end_date].min
+  #     days_in_month = (month_end - [current_date, start_date].max).to_i + 1
+
+  #     days_per_month[current_date.strftime("%Y-%m")] = days_in_month
+
+  #     current_date = current_date.next_month.beginning_of_month
+  #   end
+
+  #   days_per_month
+  # end
+
+  def monthly_revenue
+
+  end
+
+
 end
