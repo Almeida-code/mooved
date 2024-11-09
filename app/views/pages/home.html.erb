@@ -8,3 +8,39 @@
     <p>Mooved connects you to trusted truck rental services, ensuring a smooth, efficient, and professional experience every time. Join us and make your next move with confidence.</p>
   </div>
 </div>
+
+<div class="truck-list">
+  <h2>Available Trucks</h2>
+  <table class="table-trucks">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Photo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @trucks.each do |truck| %>
+        <tr>
+          <td class="first-column">
+            <% if user_signed_in? %>
+            <%= link_to truck.title, new_truck_booking_path(truck) %> <!-- Redirects to the booking form for the specific truck -->
+            <% else %>
+            <%= link_to truck.title, new_user_session_path, class: "redirect-link" %> <!-- Redirect to login page -->
+            <% end %>
+          </td>
+          <td><%= truck.description %></td>
+          <td>$<%= truck.price %></td>
+          <td>
+            <% if truck.photo.attached? %>
+              <%= image_tag truck.photo, alt: truck.title, class: "truck-photo" %>
+            <% else %>
+              <%= image_tag "https://d2e5b8shawuel2.cloudfront.net/vehicle/287160/hrv/original.jpg", alt: "Placeholder", class: "truck-photo", style: "width: 100px; height: 100px;" %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

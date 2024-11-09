@@ -1,0 +1,57 @@
+// alltrucks.scss
+
+.table-trucks {
+  width: 80%; // Adjust as needed to center within the page
+  margin: 0 auto; // Center the table horizontally
+  border-collapse: collapse;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  th, td {
+    border: 1px solid #ddd; // Border for table cells
+    padding: 12px;
+  }
+
+  th {
+    background-color: #00d0d7; // Color for the header
+    color: white; // White text for contrast
+    font-weight: bold;
+  }
+
+  td.first-column {
+    background-color: transparent; // Remove the background color
+    color: inherit; // Inherit text color
+    font-weight: normal; // Reset font weight if necessary
+  }
+
+  tr:nth-child(even) {
+    background-color: #f9f9f9; // Light background for alternating rows
+  }
+
+  tr:hover {
+    background-color: #f1f1f1; // Hover effect for rows
+  }
+}
+
+/* Styling for images inside the table */
+.table-trucks img.truck-photo {
+  max-width: 1000px !important;      /* Limit the max-width to 50px */
+  max-height: 100px !important;     /* Limit the max-height to 50px */
+  object-fit: contain !important; /* Ensure the whole image fits */
+  border-radius: 4px;              /* Optional: Add rounded corners */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .table-trucks img.truck-photo {
+    width: 80px !important;   /* Smaller images for tablets */
+    height: 80px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .table-trucks img.truck-photo {
+    width: 60px !important;   /* Even smaller images for mobile */
+    height: 60px !important;
+  }
+}
